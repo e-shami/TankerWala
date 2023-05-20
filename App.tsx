@@ -3,6 +3,7 @@ import {
   SafeAreaView, StyleSheet, Dimensions
 } from "react-native";
 import {Login} from './Pages/login';
+import {Register} from "./Pages/register"
 
 
 const window = Dimensions.get('window');
@@ -15,7 +16,10 @@ function App() {
 
   return (
     <SafeAreaView style={styles.background}>
-      <Login />
+      <Login screen={screen}
+     />
+
+      {/* <Register height={screen.height} /> */}
     </SafeAreaView>
     
 
@@ -26,8 +30,6 @@ const styles = StyleSheet.create({
     background:{
         display: "flex",
         backgroundColor: "#BFBBBB",
-        height: screen.height,
-        width: screen.width
     }
 })
 
