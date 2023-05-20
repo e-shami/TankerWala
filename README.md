@@ -1,0 +1,3 @@
+# Tankerwala
+The FYP project
+This is our FYP project titled as Tankerwala, a smart water monitoring and ordering system, similar to a typical online booking system. This project compromises of both mobile (Android) and web application. The Android application is developed by using React-native, whereas React.js is used for developing the web application. The Android app will be used by the customer for monitoring the household water level, and place and manage orders for a tanker. The tanker driver will accept and navigate to the delivery location. While the service provider will monitor the orders and company's progress using the web applicatoin.Similarly, our system admin will provide customer support and related functionalities using the web interface.
