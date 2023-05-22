@@ -18,7 +18,14 @@ export function Login(props){
 
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
+    const [isPasswordVisible, setPasswordVisible] = React.useState(false);
     const [checked, setChecked] = React.useState(false);
+
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(!isPasswordVisible);
+    };
+
+
     return(
         <View style={[styles.outerContainer, {height:props.screen.height}]}>
             <View style={styles.innerContainer}>
@@ -33,13 +40,19 @@ export function Login(props){
                     value={email}
                     onChangeText={(text) => setEmail(text)}
                     />
-                <TextInput style={styles.inputFields}
+                <TextInput
+                    style={styles.inputFields}
                     mode="outlined"
                     label="Password"
-                    secureTextEntry
-                    // right={<TextInput.Icon icon="eye" />}
+                    secureTextEntry={!isPasswordVisible}
+                    right={
+                        <TextInput.Icon
+                        icon={isPasswordVisible ? 'eye' : 'eye-off'}
+                        onPress={togglePasswordVisibility}
+                        />
+                    }
                     value={password}
-                    onChangeText={(text) => setPassword(text)}
+                    onChangeText={text => setPassword(text)}
                     />
 
                 <View style={[styles.row, {marginTop:10, marginBottom:10}]}>

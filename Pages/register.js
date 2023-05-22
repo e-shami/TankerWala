@@ -15,6 +15,12 @@ export function Register(props){
     const [name, setName] = React.useState("");
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
+    const [confirmPassword, setConfirmPassword] = React.useState("");
+    const [isPasswordVisible, setPasswordVisible] = React.useState(false);
+
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(!isPasswordVisible);
+    };
     
     return(
         <View style={[styles.outerContainer, {height:props.height}]}>
@@ -37,22 +43,34 @@ export function Register(props){
                     value={email}
                     onChangeText={(text) => setEmail(text)}
                     />
-                <TextInput style={styles.inputFields}
+                <TextInput
+                    style={styles.inputFields}
                     mode="outlined"
                     label="Password"
-                    secureTextEntry
-                    right={<TextInput.Icon icon="eye" />}
+                    secureTextEntry={!isPasswordVisible}
+                    right={
+                        <TextInput.Icon
+                        icon={isPasswordVisible ? 'eye' : 'eye-off'}
+                        onPress={togglePasswordVisibility}
+                        />
+                    }
                     value={password}
-                    onChangeText={(text) => setPassword(text)}
+                    onChangeText={text => setPassword(text)}
                     />
 
-                <TextInput style={styles.inputFields}
+                <TextInput
+                    style={styles.inputFields}
                     mode="outlined"
                     label="Confirm Password"
-                    secureTextEntry
-                    right={<TextInput.Icon icon="eye" />}
-                    value={password}
-                    onChangeText={(text) => setPassword(text)}
+                    secureTextEntry={!isPasswordVisible}
+                    right={
+                        <TextInput.Icon
+                        icon={isPasswordVisible ? 'eye' : 'eye-off'}
+                        onPress={togglePasswordVisibility}
+                        />
+                    }
+                    value={confirmPassword}
+                    onChangeText={text => setConfirmPassword(text)}
                     />
 
                 <TextInput style={styles.inputFields}
