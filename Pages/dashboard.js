@@ -1,17 +1,16 @@
 import React from "react";
 import {
     View,
-    TouchableOpacity,
     StyleSheet
 } from "react-native";
 
 import {
     Text,
-    TextInput,
-    Checkbox,
     Button,
 } from "react-native-paper";
 import MenuDrawer from "../Components/menuDrawer";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+
 
 export function Dashboard(props){
 
@@ -50,17 +49,20 @@ export function Dashboard(props){
                         </View>
                     </View>
 
-                    <View style={styles.row}>
-                        <Text variant="bodyMedium"
-                            style={{textAlign:"center", flexWrap:"wrap", width:175, marginRight:10}}>
-                            Request is auto-generated when below threshold
-                        </Text>
+                    <View style={[styles.row]}>
+                        <View style={[styles.row, {backgroundColor:"#efefef", borderRadius:10, padding:3}]}>
+                            <Icon name="alert-decagram" size={35} color="#b6b6b6" />
+                            <Text variant="bodyMedium"
+                                style={{textAlign:"center", flexWrap:"wrap", width:175}}>
+                                Request is auto-generated when below threshold
+                            </Text>
+                        </View>
 
                         <Button 
                             mode="contained"
                             buttonColor="#655959"
-                            style={{height:50, justifyContent:"center"}}
-                            labelStyle={{fontSize:15}}
+                            style={{height:50, minWidth: 107, justifyContent:"center", marginLeft:5}}
+                            labelStyle={{fontSize:14}}
                             disabled={true}>
                             Confirm?
                         </Button>
@@ -111,7 +113,8 @@ export function Dashboard(props){
 const styles = StyleSheet.create({
     outerContainer: {
         display: "flex",
-        justifyContent: "center"
+        justifyContent: "flex-start",
+        marginTop:15
     },
 
     innerContainer:{
@@ -134,7 +137,9 @@ const styles = StyleSheet.create({
     row:{
         padding:0,
         display: "flex",
-        margin:15,
+        marginTop:10,
+        marginBottom:10,
+        alignItems: "center",
         flexDirection:"row"
     },
 

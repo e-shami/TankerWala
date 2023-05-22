@@ -13,6 +13,7 @@ import {
     IconButton
 } from "react-native-paper";
 
+import Icon from "react-native-vector-icons/MaterialIcons"
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
@@ -27,49 +28,22 @@ function MenuDrawer() {
   
     return (
       <NavigationContainer>
-        
+        <TouchableOpacity style={{marginLeft:25, marginTop:35}}
+          onPress={toggleDrawer}
+        >
+          <Icon name="menu" size={50}/>
+        </TouchableOpacity>
+        <View style={{backgroundColor:"pink"}}>
+
+        </View>
+
         
       </NavigationContainer>
     );
   };
   
   const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-    },
-    mainContent: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    text: {
-      fontSize: 24,
-      marginBottom: 20,
-    },
-    menuButton: {
-      padding: 10,
-      backgroundColor: 'lightblue',
-      borderRadius: 5,
-    },
-    menuButtonText: {
-      fontSize: 16,
-      color: 'white',
-    },
-    drawer: {
-      backgroundColor: 'white',
-      padding: 20,
-    },
-    drawerItem: {
-      marginBottom: 10,
-    },
-    drawerItemText: {
-      fontSize: 18,
-    },
-    screen: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
+    
   });
   
   export default MenuDrawer;
