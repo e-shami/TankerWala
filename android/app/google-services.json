@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "401144342184",
+    "project_id": "tankerwala-d1773",
+    "storage_bucket": "tankerwala-d1773.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401144342184:android:fe05f780ea89d83643449d",
+        "android_client_info": {
+          "package_name": "com.tankerwala"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401144342184-5e0b09ave2aar5f23vrch62h21cuvsk8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLGsVIQn8v7MCobBLU_M2ql9KUKHrJhWQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401144342184-5e0b09ave2aar5f23vrch62h21cuvsk8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

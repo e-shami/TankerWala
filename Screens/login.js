@@ -38,8 +38,8 @@ function Login({navigation}){
 
 
     return(
-        <View style={[styles.outerContainer, {height:screen.height * 0.9}]}>
-            <View style={styles.innerContainer}>
+        <View style={styles.outerContainer}>
+            <View style={[styles.innerContainer, {height:screen.height * 0.825}]}>
                 <Text variant="displaySmall"
                 style={{textAlign:"center", marginBottom:25}}>
                     Sign in
@@ -66,7 +66,7 @@ function Login({navigation}){
                     onChangeText={text => setPassword(text)}
                     />
 
-                <View style={[styles.row, {marginTop:10, marginBottom:10}]}>
+                <View style={[styles.row, {marginTop:10, marginBottom:20}]}>
                     <Checkbox.Item label="Remember me!"
                         style={{paddingLeft:-5}}
                         labelVariant="bodySmall"
@@ -91,7 +91,7 @@ function Login({navigation}){
                     Login
                 </Button>
 
-                <View style={[styles.row, {marginTop:35, marginBottom:35}]}>
+                <View style={[styles.row, {marginTop:40, marginBottom:40}]}>
                     <View style={styles.line}/>
                     <Text variant="bodyMedium"
                         style={{fontWeight:"bold"}}>
@@ -145,9 +145,9 @@ const styles = StyleSheet.create({
     },
     inputFields:{
         marginTop:25,
-        height: 45,
+        height: 42,
         backgroundColor:'#F4F1F1',
-        fontSize:18
+        fontSize:17
     },
 
     row:{
