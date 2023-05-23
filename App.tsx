@@ -2,10 +2,6 @@ import React from 'react';
 import {
   SafeAreaView, StyleSheet, Dimensions
 } from "react-native";
-import {Login} from './Pages/login';
-import {Register} from "./Pages/register"
-import { Dashboard } from './Pages/dashboard';
-
 
 const window = Dimensions.get('window');
 const screen = {
@@ -16,14 +12,6 @@ const screen = {
 function App() {
 
   return (
-    <SafeAreaView style={styles.background}>
-      {/* <Login screen={screen}
-     /> */}
-
-      {/* <Register height={screen.height} /> */}
-
-      <Dashboard height={screen.height}/>
-    </SafeAreaView>
     
 
   );

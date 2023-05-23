@@ -11,7 +11,7 @@ import {
     Button,
 } from "react-native-paper";
 
-export function Register(props){
+export function Register({props}){
     const [name, setName] = React.useState("");
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
