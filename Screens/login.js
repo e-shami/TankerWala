@@ -13,8 +13,8 @@ import {
     Button,
 } from "react-native-paper";
 
-import {Register} from "./register";
-
+import auth from '@react-native-firebase/auth';
+import FlashMessage, { showMessage } from "react-native-flash-message";
 const window = Dimensions.get('window');
 const screen = {
     height: window.height,
@@ -32,9 +32,31 @@ function Login({navigation}){
         setPasswordVisible(!isPasswordVisible);
     };
 
+    const handleSignIn = async () => {
+        try {
+            await auth().signInWithEmailAndPassword(email, password);
+
+            showMessage({
+                message: "Login Successful",
+                type: "success",
+                animated: true,
+                duration: 2000
+            });
+    
+            setTimeout(()=>{
+                navigation.navigate("Dashboard");
+            }, 3000)
+            
+          } catch (error) {
+            console.error('Error signing in:', error);
+            Alert.alert('Error', 'Invalid email or password');
+          }
+    }
+
     const handleSignUp = () => {
         navigation.navigate('Register');
       };
+
 
 
     return(
@@ -87,7 +109,8 @@ function Login({navigation}){
 
                 <Button 
                 mode="contained"
-                buttonColor="#655959">
+                buttonColor="#655959"
+                onPress={handleSignIn}>
                     Login
                 </Button>
 
@@ -122,6 +145,8 @@ function Login({navigation}){
                     </Text>
                 </TouchableOpacity>
                 </View>
+
+                <FlashMessage position='center'/>
             </View>
         </View>
     );

@@ -14,6 +14,7 @@ import {
 } from "react-native-paper";
 
 import firestore from '@react-native-firebase/firestore';
+import auth from "@react-native-firebase/auth"
 import FlashMessage, { showMessage } from "react-native-flash-message";
 
 const window = Dimensions.get('window');
@@ -23,24 +24,7 @@ const screen = {
 }
 
 
-const registerUser = async (name, email, password, easypaisaAccountNumber, cnic) => {
-    try{
-        const userRef = firestore().collection('users');
-        await userRef.add({
-            name: name,
-            email: email,
-            password: password,
-            easypaisaAccountNo: easypaisaAccountNumber,
-            CNIC: cnic
-        });
-    }
-    catch (error){
-        console.log(error);
-    }
-}
-
-
-function Register(){
+function Register({navigation}){
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -54,6 +38,36 @@ function Register(){
     const togglePasswordVisibility = () => {
         setPasswordVisible(!isPasswordVisible);
     };
+
+    const registerUser = async (name, email, password, easypaisaAccountNumber, cnic) => {
+        try{
+            const { user } = await auth().createUserWithEmailAndPassword(email, password);
+
+      // Store additional user data in Firestore
+            await firestore().collection('users').doc(user.uid).set({
+                name: name,
+                email:email,
+                easypaisaAccountNumber: easypaisaAccountNumber,
+                CNIC: cnic
+            });
+
+            showMessage({
+                message: "Registration Successful",
+                type: "success",
+                animated: true,
+                duration: 2000
+            });
+    
+            setTimeout(()=>{
+                navigation.navigate("Dashboard");
+            }, 3000)
+            // Add any additional logic or navigation here
+            } catch (error) {
+            console.error('Error registering user:', error);
+            Alert.alert('Error', 'An error occurred while registering');
+            }
+        }
+    
 
     const handleInputChange = (inputName, value) => {
         if(errors[inputName]){
@@ -116,11 +130,6 @@ function Register(){
         registerUser(name, email, password, easypaisaAccountNumber, cnic);
         setName(''); setEmail(''); setPassword(''); setConfirmPassword('');
         setEasypaisaAccountNumber(''); setCnic('')
-
-        showMessage({
-            message: "Registration Successful",
-            type: "success"
-        });
     }
     
     
@@ -221,7 +230,7 @@ function Register(){
                         Register
                 </Button>
             </View>
-            <FlashMessage position='top'/>
+            <FlashMessage position='center'/>
         </View>
     );
 };

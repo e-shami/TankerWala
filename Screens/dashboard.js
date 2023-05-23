@@ -11,8 +11,7 @@ import {
 import MenuDrawer from "../Components/menuDrawer";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-
-export function Dashboard(props){
+function Dashboard(props){
 
     const [waterRemaining, SetWaterRemaining] = React.useState();
     const [estimatedTime, SetEstimatedTime] = React.useState();
@@ -21,7 +20,7 @@ export function Dashboard(props){
 
     return(
         <View>
-            <MenuDrawer />
+            {/* <MenuDrawer /> */}
             <View style={[styles.outerContainer, {height:props.height}]}>
                 <View style={styles.innerContainer}>
                     
@@ -155,3 +154,5 @@ const styles = StyleSheet.create({
         borderRadius:25,
     }
 })
+
+export default Dashboard;

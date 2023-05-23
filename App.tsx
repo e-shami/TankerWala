@@ -5,6 +5,7 @@ import { StyleSheet } from 'react-native';
 import SplashScreen from './Screens/splash';
 import LoginScreen from './Screens/login';
 import RegisterScreen  from './Screens/register';
+import DashboardScreen from './Screens/dashboard';
 
 const Stack = createStackNavigator();
 
@@ -19,8 +20,7 @@ function App() {
         />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen}/>
-
-
+        <Stack.Screen name="Dashboard" component={DashboardScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
