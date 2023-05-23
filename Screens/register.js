@@ -14,6 +14,7 @@ import {
 } from "react-native-paper";
 
 import firestore from '@react-native-firebase/firestore';
+import FlashMessage, { showMessage } from "react-native-flash-message";
 
 const window = Dimensions.get('window');
 const screen = {
@@ -113,6 +114,13 @@ function Register(){
         }
 
         registerUser(name, email, password, easypaisaAccountNumber, cnic);
+        setName(''); setEmail(''); setPassword(''); setConfirmPassword('');
+        setEasypaisaAccountNumber(''); setCnic('')
+
+        showMessage({
+            message: "Registration Successful",
+            type: "success"
+        });
     }
     
     
@@ -213,6 +221,7 @@ function Register(){
                         Register
                 </Button>
             </View>
+            <FlashMessage position='top'/>
         </View>
     );
 };
