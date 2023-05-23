@@ -2,7 +2,8 @@ import React from "react";
 import {
     View,
     TouchableOpacity,
-    StyleSheet
+    StyleSheet,
+    Dimensions
 } from "react-native";
 
 import {
@@ -14,7 +15,13 @@ import {
 
 import {Register} from "./register";
 
-export function Login(props){
+const window = Dimensions.get('window');
+const screen = {
+    height: window.height,
+    width: window.width
+}
+
+function Login({navigation}){
 
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
@@ -25,9 +32,13 @@ export function Login(props){
         setPasswordVisible(!isPasswordVisible);
     };
 
+    const handleSignUp = () => {
+        navigation.navigate('Register');
+      };
+
 
     return(
-        <View style={[styles.outerContainer, {height:props.screen.height}]}>
+        <View style={[styles.outerContainer, {height:screen.height * 0.9}]}>
             <View style={styles.innerContainer}>
                 <Text variant="displaySmall"
                 style={{textAlign:"center", marginBottom:25}}>
@@ -105,7 +116,8 @@ export function Login(props){
                     
                 }}>
                     <Text variant="bodySmall"
-                        style={{fontWeight:"bold"}}>
+                        style={{fontWeight:"bold"}}
+                        onPress={handleSignUp}>
                         Sign up
                     </Text>
                 </TouchableOpacity>
@@ -126,7 +138,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignContent: "flex-end",
         backgroundColor: "#D9D9D9",
-        height: "80%",
+        height: "90%",
         margin: 25, 
         padding: 20,
         borderRadius:25
@@ -158,3 +170,5 @@ const styles = StyleSheet.create({
         borderRadius:5
     }
 })
+
+export default Login;

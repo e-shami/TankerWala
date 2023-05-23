@@ -2,7 +2,8 @@ import React from "react";
 import {
     View,
     TouchableOpacity,
-    StyleSheet
+    StyleSheet,
+    Dimensions
 } from "react-native";
 
 import {
@@ -11,7 +12,14 @@ import {
     Button,
 } from "react-native-paper";
 
-export function Register({props}){
+const window = Dimensions.get('window');
+const screen = {
+    height: window.height,
+    width: window.width
+}
+
+
+function Register(){
     const [name, setName] = React.useState("");
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
@@ -23,7 +31,7 @@ export function Register({props}){
     };
     
     return(
-        <View style={[styles.outerContainer, {height:props.height}]}>
+        <View style={[styles.outerContainer, {height:screen.height * 0.95}]}>
             <View style={styles.innerContainer}>
                 <Text variant="displaySmall"
                 style={{textAlign:"center", marginBottom:25}}>
@@ -140,3 +148,5 @@ const styles = StyleSheet.create({
         borderRadius:5
     },
 })
+
+export default Register;
