@@ -9,7 +9,6 @@ import {
     Text,
     Button,
 } from "react-native-paper";
-import MenuDrawer from "../Components/menuDrawer";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const window = Dimensions.get('window');
@@ -18,16 +17,61 @@ const screen = {
     width: window.width
 }
 
+// pop up for confirmation
+
+
+
+
+
 function Dashboard({navigation}){
 
     const [waterRemaining, SetWaterRemaining] = React.useState();
     const [estimatedTime, SetEstimatedTime] = React.useState();
     const [threshold, SetThreshold] = React.useState();
+    const [confirmation, SetConfirmation] = React.useState(false);
+
+    const Confirmation = () => {
+        return(
+            <View style={{borderRadius:25, alignItems: 'center', justifyContent: 'center'}}>
+                <Text variant="titleMedium"
+                    style={{textAlign:"center", padding:20, fontWeight:"700", color: "white", paddingBottom: 50, fontSize: 24, marginTop: 50 }}>
+                    Confirm IoT Device Request
+                </Text>
     
+                <View style={{margin:5, alignItems: "flex-start", padding: 5}}>
+                    <Text variant="titleMedium"
+                        style={{textAlign:"center", color: "#000000", fontWeight:"500", fontSize: 18, marginBottom:25, backgroundColor: "#D9D9D9", padding: 35, borderRadius: 20}}>
+                        IoT device initiated a request. Confirm tanker order?
+                    </Text>
+                    
+                </View>
+    
+                <View style={[styles.row, {marginTop:15}]}>
+                    <Button
+                        mode="contained"
+                        buttonColor="#635A5A"                    
+                        style={{height:60, width:150, justifyContent:"center", marginRight:15, borderColor: '#AEAEAE', borderWidth: 1, fontWeight: 600, fontSize: 16}}
+                        labelStyle={{fontSize:15}}
+                        onPress={() => SetConfirmation(false)}
+                        >
+                        Cancel
+                    </Button>
+    
+                    <Button
+                        mode="contained"
+                        buttonColor="#635A5A"       
+                        style={{height:60, width:150, justifyContent:"center", borderColor: '#AEAEAE', borderWidth: 1, fontWeight: 600, fontSize: 16}}
+                        labelStyle={{fontSize:15}}>
+                        Yes
+                    </Button>
+                </View>
+            </View>
+        )
+    }
 
     return(
-        <View>
-            <View style={[styles.outerContainer]}>
+        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+            <View style={[styles.outerContainer, {alignItems: 'center', justifyContent: 'center'}]}>
                 <View style={[styles.innerContainer, {height: screen.height*0.75}]}>
                     
                     <View style={[styles.status, {width:"85%"}]}>
@@ -68,11 +112,14 @@ function Dashboard({navigation}){
                             buttonColor="#655959"
                             style={{height:50, minWidth: 107, justifyContent:"center", marginLeft:5}}
                             labelStyle={{fontSize:14}}
-                            disabled={true}>
+                            // disabled={true}
+                            onPress={() => SetConfirmation(true)}
+                            >
                             Confirm?
                         </Button>
 
                     </View>
+
 
                     <View style={[styles.row, {marginTop:15}]}>
                         <Button 
@@ -111,6 +158,9 @@ function Dashboard({navigation}){
                     </View>
                 </View> 
             </View>
+                <View style={{position: "absolute", borderRadius:25, alignSelf: 'center', height: '70%', backgroundColor: '#7D7D7D', opacity: 0.8}}>
+                    {confirmation && <Confirmation />}
+                </View>
         </View>
     )
 }
