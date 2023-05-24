@@ -6,6 +6,7 @@ import SplashScreen from './Screens/splash';
 import LoginScreen from './Screens/login';
 import RegisterScreen  from './Screens/register';
 import DashboardScreen from './Screens/dashboard';
+import HomeScreen from './Screens/Drawer/Home';
 import auth from "@react-native-firebase/auth"
 
 const Stack = createStackNavigator();
@@ -43,7 +44,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         {isLoggedIn?
-        <Stack.Screen name="Dashboard" component={DashboardScreen} />
+        <Stack.Screen name="Home" component={HomeScreen}  options={{headerShown:false}}/>
         : (
           <>
           <Stack.Screen name="Login" component={LoginScreen} />

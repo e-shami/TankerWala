@@ -4,7 +4,7 @@ import { View, ActivityIndicator } from 'react-native';
 const SplashScreen = () => {
   useEffect(() => {
     setTimeout(() => {
-    }, 2000); // Wait for 5 seconds
+    }, 2000); // Wait for 2 seconds
   }, []);
 
   return (

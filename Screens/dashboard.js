@@ -27,7 +27,6 @@ function Dashboard({navigation}){
 
     return(
         <View>
-            <MenuDrawer />
             <View style={[styles.outerContainer]}>
                 <View style={[styles.innerContainer, {height: screen.height*0.75}]}>
                     

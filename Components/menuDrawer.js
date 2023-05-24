@@ -1,21 +1,14 @@
 import React from "react";
 import {
     View,
-    TouchableOpacity,
-    StyleSheet
+    
 } from "react-native";
 
 import {
     Text,
-    TextInput,
-    Checkbox,
-    Button,
-    IconButton
 } from "react-native-paper";
 
-import Icon from "react-native-vector-icons/MaterialIcons"
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerActions} from '@react-navigation/drawer';
 import Dashboard from "../Screens/dashboard";
 
 const Drawer = createDrawerNavigator();
@@ -63,26 +56,25 @@ const About = () => {
 
 function MenuDrawer({navigation}) {
     const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
-  
-    const toggleDrawer = () => {
-      setIsDrawerOpen(!isDrawerOpen);
-    };
     
+    const toggleDrawer = () => {
+      navigation.toggleDrawer();
+    };
+
+
+
     return (
-      <Drawer.Navigator>
-        <Drawer.Screen name='Dashooard' component={Dashboard}/>
-        <Drawer.Screen name="Oders History" component={OrdersHistory} />
+      <Drawer.Navigator initialRouteName="Dashboard">
+        <Drawer.Screen name="Dashboard" component={Dashboard} options={{headerShown:true}} />
+        <Drawer.Screen name="Oders History" component={OrdersHistory}  />
         <Drawer.Screen name="Settings" component={Settings} />
         <Drawer.Screen name="Become A Driver" component={BecomeADriver} />
         <Drawer.Screen name="Customer Support" component={CustomerSupport} />
         <Drawer.Screen name="About" component={About} />
-
       </Drawer.Navigator>
-    );
+    );    
   };
+
   
-  const styles = StyleSheet.create({
-    
-  });
   
   export default MenuDrawer;
