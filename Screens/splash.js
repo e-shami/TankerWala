@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { View, ActivityIndicator } from 'react-native';
 
-const SplashScreen = ({ navigation }) => {
+const SplashScreen = () => {
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('Login');
-    }, 5000); // Wait for 5 seconds
+    }, 2000); // Wait for 5 seconds
   }, []);
 
   return (

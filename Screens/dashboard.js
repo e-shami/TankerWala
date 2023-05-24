@@ -1,7 +1,8 @@
 import React from "react";
 import {
     View,
-    StyleSheet
+    StyleSheet,
+    Dimensions
 } from "react-native";
 
 import {
@@ -11,7 +12,13 @@ import {
 import MenuDrawer from "../Components/menuDrawer";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-function Dashboard(props){
+const window = Dimensions.get('window');
+const screen = {
+    height: window.height,
+    width: window.width
+}
+
+function Dashboard({navigation}){
 
     const [waterRemaining, SetWaterRemaining] = React.useState();
     const [estimatedTime, SetEstimatedTime] = React.useState();
@@ -20,9 +27,9 @@ function Dashboard(props){
 
     return(
         <View>
-            {/* <MenuDrawer /> */}
-            <View style={[styles.outerContainer, {height:props.height}]}>
-                <View style={styles.innerContainer}>
+            <MenuDrawer />
+            <View style={[styles.outerContainer]}>
+                <View style={[styles.innerContainer, {height: screen.height*0.75}]}>
                     
                     <View style={[styles.status, {width:"85%"}]}>
                         <Text variant="titleLarge"
@@ -112,13 +119,14 @@ function Dashboard(props){
 const styles = StyleSheet.create({
     outerContainer: {
         display: "flex",
-        justifyContent: "flex-start",
-        marginTop:15
+        justifyContent: "center",
+        marginTop:25
     },
 
     innerContainer:{
         display: "flex",
         justifyContent: "center",
+        position: "relative",
         alignItems:"center",
         backgroundColor: "#D9D9D9",
         height: "70%",

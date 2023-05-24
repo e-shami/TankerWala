@@ -3,7 +3,7 @@ import {
     View,
     TouchableOpacity,
     StyleSheet,
-    Dimensions
+    Dimensions, Alert
 } from "react-native";
 
 import {

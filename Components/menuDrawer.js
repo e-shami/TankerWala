@@ -16,29 +16,68 @@ import {
 import Icon from "react-native-vector-icons/MaterialIcons"
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import Dashboard from "../Screens/dashboard";
 
 const Drawer = createDrawerNavigator();
 
-function MenuDrawer() {
+//temp screens
+const Settings = () => {
+  return(
+    <View>
+      <Text>Settings screen</Text>
+    </View>
+  )
+}
+
+const OrdersHistory = () => {
+  return(
+    <View>
+      <Text>Orders History screen</Text>
+    </View>
+  )
+}
+
+const BecomeADriver = () => {
+  return(
+    <View>
+      <Text>Become a driver screen</Text>
+    </View>
+  )
+}
+
+const CustomerSupport = () => {
+  return(
+    <View>
+      <Text>CustomerSupport screen</Text>
+    </View>
+  )
+}
+
+const About = () => {
+  return(
+    <View>
+      <Text>About application screen</Text>
+    </View>
+  )
+}
+
+function MenuDrawer({navigation}) {
     const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   
     const toggleDrawer = () => {
       setIsDrawerOpen(!isDrawerOpen);
     };
-  
+    
     return (
-      <NavigationContainer>
-        <TouchableOpacity style={{marginLeft:25, marginTop:35}}
-          onPress={toggleDrawer}
-        >
-          <Icon name="menu" size={50}/>
-        </TouchableOpacity>
-        <View style={{backgroundColor:"pink"}}>
+      <Drawer.Navigator>
+        <Drawer.Screen name='Dashooard' component={Dashboard}/>
+        <Drawer.Screen name="Oders History" component={OrdersHistory} />
+        <Drawer.Screen name="Settings" component={Settings} />
+        <Drawer.Screen name="Become A Driver" component={BecomeADriver} />
+        <Drawer.Screen name="Customer Support" component={CustomerSupport} />
+        <Drawer.Screen name="About" component={About} />
 
-        </View>
-
-        
-      </NavigationContainer>
+      </Drawer.Navigator>
     );
   };
   
