@@ -35,7 +35,6 @@ function Login({navigation}){
     const handleSignIn = async () => {
         try {
             await auth().signInWithEmailAndPassword(email, password);
-
             showMessage({
                 message: "Login Successful",
                 type: "success",

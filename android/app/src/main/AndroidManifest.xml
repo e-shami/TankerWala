@@ -21,5 +21,12 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
+
+
+      // these are the api-keys for google maps
+      <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="YOUR_API_KEY_GOES_HERE" />
+
     </application>
 </manifest>

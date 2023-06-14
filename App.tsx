@@ -2,17 +2,23 @@ import React, {useState, useEffect}from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet } from 'react-native';
+
+import ScheduleScreen from './Screens/schedule';
 import SplashScreen from './Screens/splash';
+import WelcomeScreen from './Screens/welcome';
 import LoginScreen from './Screens/login';
 import RegisterScreen  from './Screens/register';
-import DashboardScreen from './Screens/dashboard';
 import HomeScreen from './Screens/Drawer/Home';
+import PlaceOrderScreen from './Screens/placeOrder';
+import PaymentScreen from './Screens/payment';
+
 import auth from "@react-native-firebase/auth"
 
 const Stack = createStackNavigator();
 
 function App() {
 
+  const [isSplashVisible, setIsSplashVisible] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -36,7 +42,15 @@ function App() {
     return () => unsubscribe();
   }, []);
 
-  if (isLoading) {
+  useEffect(() => {
+    if (!isLoading) {
+      setTimeout(() => {
+        setIsSplashVisible(false);
+      }, 2000); // Wait for 2 seconds
+    } 
+  }, [isLoading]);  
+
+  if (isSplashVisible) {
     return <SplashScreen />;
   }
 
@@ -47,11 +61,15 @@ function App() {
         <Stack.Screen name="Home" component={HomeScreen}  options={{headerShown:false}}/>
         : (
           <>
-          <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="Register" component={RegisterScreen}/>
+            <Stack.Screen name="Welcome" component={WelcomeScreen} options={{headerShown: false}}/>
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Register" component={RegisterScreen}/>          
           </>
         )
         }
+        <Stack.Screen name="Schedule" component={ScheduleScreen}/>
+        <Stack.Screen name="PlaceOrder" component={PlaceOrderScreen} />
+        <Stack.Screen name="Payment" component={PaymentScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

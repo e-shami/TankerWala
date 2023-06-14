@@ -17,11 +17,6 @@ const screen = {
     width: window.width
 }
 
-// pop up for confirmation
-
-
-
-
 
 function Dashboard({navigation}){
 
@@ -67,6 +62,14 @@ function Dashboard({navigation}){
                 </View>
             </View>
         )
+    }
+
+    const handdleSchedule = () => {
+        navigation.navigate('Schedule');
+    }
+
+    const handleRequestOrder = () => {
+        navigation.navigate('PlaceOrder');
     }
 
     return(
@@ -126,7 +129,8 @@ function Dashboard({navigation}){
                             mode="contained"
                             buttonColor="#B6B6B6"
                             style={{height:60, width:155, justifyContent:"center", marginRight:10}}
-                            labelStyle={{fontSize:15}}>
+                            labelStyle={{fontSize:15}}
+                            onPress={handleRequestOrder}>
                             Request order
                         </Button>
 
@@ -152,7 +156,9 @@ function Dashboard({navigation}){
                             mode="contained"
                             buttonColor="#B6B6B6"
                             style={{height:80, width:155, justifyContent:"center"}}
-                            labelStyle={{fontSize:15}}>
+                            labelStyle={{fontSize:15}}
+                            onPress={handdleSchedule}
+                            >
                             Schedule order
                         </Button>
                     </View>
@@ -211,5 +217,4 @@ const styles = StyleSheet.create({
         borderRadius:25,
     }
 })
-
 export default Dashboard;

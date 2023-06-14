@@ -16,6 +16,8 @@ import {
 import firestore from '@react-native-firebase/firestore';
 import auth from "@react-native-firebase/auth"
 import FlashMessage, { showMessage } from "react-native-flash-message";
+import KeyboardAwareScrollView from 'react-native-keyboard-aware-scroll-view';
+
 
 const window = Dimensions.get('window');
 const screen = {
@@ -128,6 +130,9 @@ function Register({navigation}){
         }
 
         registerUser(name, email, password, easypaisaAccountNumber, cnic);
+        setTimeout(()=>{
+            //
+        }, 2000)
         setName(''); setEmail(''); setPassword(''); setConfirmPassword('');
         setEasypaisaAccountNumber(''); setCnic('')
     }
@@ -141,7 +146,8 @@ function Register({navigation}){
                         Register
                 </Text>
 
-                <ScrollView >
+                <ScrollView 
+                    automaticallyAdjustKeyboardInsets={true}>
                     <TextInput style={styles.inputFields}
                         mode="outlined"
                         label="Name"
